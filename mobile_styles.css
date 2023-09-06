@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    background-image: url('https://www.surfertoday.com/images/stories/sunrisesunsettime.jpg');
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+}
+table{
+    width: 100%;
+}
+td {
+    border: 1px solid white;
+    width: 50%;
+    padding: 5px;
+    color: white;
+    font-size: 26px;
+}
+.header {
+    color: white;
+    width: 100%;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    font-size: 32px;
+    background-color: rgba(255, 0, 0, 0.4);
+}
+.header_spacer {
+    color: white;
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+.connect_logo {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+.body_wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+.section {
+    width: 70%;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.4);
+    padding: 20px;
+    font-size: 18px;
+    color: white;
+    margin: 0 auto;
+    display: block;
+}
+.section_spacer {
+    width: 100;
+    font-size: 18px;
+    margin: 0 auto;
+    display: block;
+}
+a {
+    color: yellow;
+}
+.connect_section {
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.4);
+    padding: 20px;
+    font-size: 18px;
+    color: white;
+    margin: 0 auto;
+    display: block;
+}
