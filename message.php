@@ -61,6 +61,9 @@ ob_end_flush();
                     <?php
                 }
                 if ($action == "update") {
+                    $to_message_id = mysqli_real_escape_string($link, $to_message_id);
+                    $subject = mysqli_real_escape_string($link, $subject);
+                    $body = mysqli_real_escape_string($link, $body);
                     $msg_sql = "insert into messages (from_user_id, to_user_id, subject, body)";
                     $msg_sql = $msg_sql . " VALUES ";
                     $msg_sql = $msg_sql . "($user_id, $message_to_id, '$subject', '$body')";
@@ -73,6 +76,20 @@ ob_end_flush();
                     echo ("<P>Message Subject<br />$subject</P>");
                     echo ("<P>Message Body<br />$body</P>");
                     echo ("<P><a href='connect.php'>Return to Home</a></p>");
+
+                    $to_email_sql = "select email from users where user_id = $message_to_id";
+                    $to_email_result = mysqli_query($link, $to_email_sql);
+                    $to_email_row = mysqli_fetch_assoc($to_email_result);
+                    $to_email = $to_email_row['email'];
+                    $to      = $name . " <" . $to_email . ">";
+                    $subject = 'You Have A Message On Journey Connect';
+                    $message = 'You have received a message from a user on Journey Connect. Login and select message center to read it.';
+                    $message .= "\r\n\r\nThis is an automated communication from the Journey Connect service on which you have registered an account. If you are receiving these messages and do not wish to receive them simply reply to this message and let our support staff know.";
+                    $headers = 'From: JC Support <support@dewdevelopment.com>' . "\r\n" .
+                        'Reply-To: JC Support <support@dewdevelopment.com>' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+
+                    mail($to, $subject, $message, $headers);
                 }
                 ?> 
             </div>

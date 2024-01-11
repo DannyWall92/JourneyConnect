@@ -36,31 +36,31 @@ ob_end_flush();
                     <input type="hidden" name="workshops" value="<?php echo $workshops ?>">
                     <p>
                         Your Real First & Last Name<br />
-                        <input type="text" class="textinput" name="firstlast" size="50" required />
+                        <input minlength="5" type="text" class="textinput" name="firstlast" size="50" required />
                     </p>
                     <p>
                         Your Age<br />
-                        <input type="text" class="textinput" name="age" size="50" required />
+                        <input minlength="2" type="text" class="textinput" name="age" size="50" required />
                     </p>
                     <P>
-                        Your Email (will also be your username)<br />
-                        <input type="text" class="textinput" name="email" size="50" required />
+                        Your Email (your username, a verification link will be sent)<br />
+                        <input minlength="10" type="text" class="textinput" name="email" size="50" required />
                     </p>
                     <p>
-                        Password You Want To Use<br />
-                        <input type="text" class="textinput" name="password" size="50" required />
+                        Password You Want To Use (at least 8 characters)<br />
+                        <input minlength="8" type="text" class="textinput" name="password" size="50" required />
                     </p>
                     <p>
                         City You Live In<br />
-                        <input type="text" class="textinput" name="city" size="50" required />
+                        <input minlength="5" type="text" class="textinput" name="city" size="50" required />
                     </p>
                     <P>
-                        State You Live In<br />
+                        State/Province/Country You Live In<br />
                         <input type="text" class="textinput" name="state" size="50" required />
                     </p>
                     <p>
                         Your Profession<br />
-                        <input type="text" class="textinput" name="job" size="50" required />
+                        <input minlength="3" type="text" class="textinput" name="job" size="50" required />
                     </p>
                     <input type="submit" name="submit" value="Next >>">
                 </form>

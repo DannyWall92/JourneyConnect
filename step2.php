@@ -26,15 +26,15 @@ if (isset($_GET['submit'])) {
                     <input type="hidden" name="lookingfor" value="<?php echo $lookingfor ?>">
                     <p>
                         Spiritual Traditions (comma separated)<br />
-                        <input type="text" class="textinput" name="spiritual" size="50" placeholder="Example: Yoga, Kundalini" />
+                        <input required type="text" class="textinput" name="spiritual" size="50" placeholder="Example: Yoga, Kundalini" />
                     </p>
                     <P>
                         Experts (comma separated)<br />
-                        <input type="text" class="textinput" name="experts" size="50" placeholder="Example: Eckhart Tolle, Dr. Joe Dispenza" />
+                        <input required type="text" class="textinput" name="experts" size="50" placeholder="Example: Eckhart Tolle, Dr. Joe Dispenza" />
                     </p>
                     <p>
                         The Best Books You&apos;ve Read (comma separated)<br />
-                        <input type="text" class="textinput" name="books" size="50" placeholder="Example: Becoming Supernatural, You Are Here" />
+                        <input required type="text" class="textinput" name="books" size="50" placeholder="Example: Becoming Supernatural, You Are Here" />
                     </p>
                     <p>
                         Seminars You&apos;ve Been To (comma separated, single day events)<br />

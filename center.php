@@ -25,8 +25,8 @@ ob_end_flush();
         <script src="scripts.js"></script>
     </head>
 
-   <body>
-       <div class="header">
+    <body>
+        <div class="header">
             <div class="connect_logo"><a href="connect.php">Journey Connect</a></div>
             <div class="nav">
                 <a href="center.php">Message Center</a> | 

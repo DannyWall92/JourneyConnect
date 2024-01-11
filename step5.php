@@ -18,17 +18,17 @@ if (!isset($_COOKIE['user_id'])) {
             $file_name = "$user_id" . "_1" . "." . "$file_ext";
             $upd_sql = "update users set profile_pic = '$file_name' where user_id = $user_id";
             $upd_result = mysqli_query($link, $upd_sql);
-      
+
             $extensions=array("jpeg","jpg","png");
-      
+
             if(in_array($file_ext,$extensions)=== false){
                 $errors[]="extension not allowed, please choose a JPEG or PNG file.";
             }
-      
+
             if($file_size > 6097152) {
                 $errors[]='File size must not exceed 6 MB';
             }
-      
+
             if(empty($errors)==true) {
                 move_uploaded_file($file_tmp,"images/".$file_name);
                 echo "Success";
@@ -55,8 +55,8 @@ ob_end_flush();
         <link rel="stylesheet" href="styles.css" />
     </head>
 
-   <body>
-       <div class="header">
+    <body>
+        <div class="header">
             <div class="connect_logo">Journey Connect</div>
             <div class="nav">Sign In</div>
         </div>
@@ -82,9 +82,8 @@ ob_end_flush();
                     <?php
                     }
                     ?>
-
-			    </form>
+                </form>
             </div>
         </div>
-   </body>
+    </body>
 </html>

@@ -60,7 +60,7 @@ ob_end_flush();
                     echo ("<p>Please <a href='signing.php'>log in</a></p>");
                 } else {
                 ?>
-                    <h2>Describe Yourself For Your Profile</h2>
+                    <h2>Describe Yourself And What You Are Looking For</h2>
                     <form action="step5.php" method="POST">
                         <textarea class="inputarea" name="profile_description" rows="20" cols="50"></textarea><br />
                         <input type="submit" name="submit" value="Next >>" />
