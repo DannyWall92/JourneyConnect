@@ -33,8 +33,8 @@ ob_end_flush();
         <link rel="stylesheet" href="mobile_styles.css" />
     </head>
 
-   <body>
-       <div class="header">
+    <body>
+        <div class="header">
             <div class="connect_logo"><a href="connect.php">Journey Connect</a></div>
             <div class="nav">
                 <a href="center.php">Message Center</a> | 
@@ -46,7 +46,45 @@ ob_end_flush();
         <div class="body_wrapper">
             <div class="connect_section">
                 <?php
-                $peeps_sql = "select * from users";
+                $peeps_sql = "select * from users where city like '$user_city' and user_id <> $user_id";
+                $peeps_result = mysqli_query($link, $peeps_sql);
+                while ($peeps_row = mysqli_fetch_assoc($peeps_result)) {
+                    echo ("<div class='flex_container'>");
+                        $pic = $peeps_row['profile_pic'];
+                        echo ("<div class='pic'><img width='99%' src='images/$pic' /></div>");
+                        $peep_id = $peeps_row['user_id'];
+                        $name = $peeps_row['name'];
+                        $city = $peeps_row['city'];
+                        $state = $peeps_row['state'];
+                        $spiritual = $peeps_row['spiritual'];
+                        $experts = $peeps_row['experts'];
+                        $books = $peeps_row['books'];
+                        $seminars = $peeps_row['seminars'];
+                        $workshops = $peeps_row['workshops'];
+                        $gender = $peeps_row['gender'];
+                        $lookingfor = $peeps_row['lookingfor'];
+                        $profile_description = $peeps_row['profile_description'];
+                        echo ("<div class='deets'>");
+                            echo ("<h2>$name is a $gender looking for a $lookingfor</h2>");
+                            echo ("<P><strong>Lives in:</strong> $city, $state</P>");
+                            echo ("<P><strong>Spirituality:</strong> $spiritual</p>");
+                            echo ("<P><strong>Experts:</strong> $experts</p>");
+                            echo ("<P><strong>Books:</strong> $books</p>");
+                            echo ("<P><strong>Seminars:</strong> $seminars</p>");
+                            echo ("<P><strong>Workshops:</strong> $workshops</p>");
+                            echo ("<P><strong>Profile Description:</strong> $profile_description</p>");
+                            echo ("<P><a href='message.php?id=$peep_id&new_message=yes'>Message This Person</a></p>");
+                        echo ("</div>");
+                        /*
+                        echo ("<div class='actions'>");
+                            echo ("<a href='message.php?id=$peep_id&new_message=yes'>Message</a><br />");
+                            echo ("<a href='#' onclick='like($peep_id)'>Like</a><br />");
+                        echo ("</div>");
+                        */
+                    echo ("</div>");
+                    echo ("<hr /><hr />");
+                }
+                $peeps_sql = "select * from users where city NOT like '$user_city' and user_id <> $user_id";
                 $peeps_result = mysqli_query($link, $peeps_sql);
                 while ($peeps_row = mysqli_fetch_assoc($peeps_result)) {
                     echo ("<div class='flex_container'>");

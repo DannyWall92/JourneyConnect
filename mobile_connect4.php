@@ -34,8 +34,8 @@ ob_end_flush();
         <script src="mobile_scripts.js"></script>
     </head>
 
-   <body>
-       <div class="header">
+    <body>
+        <div class="header">
             <div class="connect_logo">
                 <a href="connect.php">Journey Connect</a> | 
                 <a href="center.php">Message Center</a> | 
@@ -49,7 +49,22 @@ ob_end_flush();
             <div class="slider" id="slider">
                 <div class="holder">
                 <?php
-                $peeps_sql = "select * from users";
+                $peeps_sql = "select * from users where city like '$user_city' and user_id <> $user_id";
+                $peeps_result = mysqli_query($link, $peeps_sql);
+                while ($peeps_row = mysqli_fetch_assoc($peeps_result)) {
+                    echo ("<div class='slide-wrapper'>");
+                        echo ("<div class='slide'>");
+                            $pic = $peeps_row['profile_pic'];
+                            echo ("<img class='slide-image' src='images/$pic' />");
+                        echo ("</div>");
+                        $peep_id = $peeps_row['user_id'];
+                        $name = $peeps_row['name'];
+                        echo ("<span class='temp'>");
+                            echo ("<P><a href='message.php?id=$peep_id&new_message=yes'>$name</a></p>");
+                        echo ("</span>");
+                    echo ("</div>");
+                }
+                $peeps_sql = "select * from users where city NOT like '$user_city' and user_id <> $user_id";
                 $peeps_result = mysqli_query($link, $peeps_sql);
                 while ($peeps_row = mysqli_fetch_assoc($peeps_result)) {
                     echo ("<div class='slide-wrapper'>");
