@@ -52,8 +52,9 @@ ob_end_flush();
                 $peeps_sql = "select * from users where city like '$user_city' and user_id <> $user_id";
                 $peeps_result = mysqli_query($link, $peeps_sql);
                 while ($peeps_row = mysqli_fetch_assoc($peeps_result)) {
-                    echo ("<div class='slide-wrapper'>");
-                        echo ("<div class='slide'>");
+                    // echo ("<div class='slide-wrapper'>");
+                    echo ("<div style='width:95%; margin: 0 auto; padding: 25px; border-bottom: 1px solid black;'>");
+                        // echo ("<div class='slide'>");
                             $pic = $peeps_row['profile_pic'];
                             echo ("<img src='images/$pic' /></div>");
                             $peep_id = $peeps_row['user_id'];
@@ -81,7 +82,7 @@ ob_end_flush();
                                 echo ("<p>$seminars</p>");
                                 echo ("<p>$workshops</p>");
                             echo ("</span>");
-                        echo ("</div>");
+                        // echo ("</div>");
                     echo ("</div>");
                 }
                 $peeps_sql = "select * from users where city NOT like '$user_city' and user_id <> $user_id";
