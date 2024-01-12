@@ -5,6 +5,7 @@ $bberry = strpos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
 $iphone = strpos($_SERVER['HTTP_USER_AGENT'],"iPhone");
 $ipod = strpos($_SERVER['HTTP_USER_AGENT'],"iPod");
 $webos = strpos($_SERVER['HTTP_USER_AGENT'],"webOS");
+
 if (!$android && !$bberry && !$iphone && !$ipod && !$webos== true) { 
     header('Location: https://dewdevelopment.com/connect/connect.php');
 } else {
@@ -18,7 +19,7 @@ if (!$android && !$bberry && !$iphone && !$ipod && !$webos== true) {
             $user_sql = "select * from users where user_id = $user_id";
             $user_result = mysqli_query($link, $user_sql);
             $user_row = mysqli_fetch_assoc($user_result);
-            $user_id = $user_row['user_id'];
+            $user_city = $user_row['city'];
         } else {
             setcookie ('user_id', $user_id, time() - (86400 * 30));
             header ('Location: https://dewdevelopment.com/connect/signin.php');
@@ -45,21 +46,18 @@ ob_end_flush();
         </div>
         <div class="header_spacer">&nbsp;</div>
 
-        <div class="slider-wrap">
-            <div class="slider" id="slider">
-                <div class="holder">
+
                 <?php
                 $peeps_sql = "select * from users where city like '$user_city' and user_id <> $user_id";
                 $peeps_result = mysqli_query($link, $peeps_sql);
                 while ($peeps_row = mysqli_fetch_assoc($peeps_result)) {
-                    // echo ("<div class='slide-wrapper'>");
-                    echo ("<div style='width:95%; margin: 0 auto; padding: 25px; border-bottom: 1px solid black;'>");
-                        // echo ("<div class='slide'>");
+                    echo ("<div style='width:100%;border-bottom:1px solid black;'>");
+                        echo ("<div style='width: 85%;margin:0 auto;'>");
                             $pic = $peeps_row['profile_pic'];
-                            echo ("<img src='images/$pic' /></div>");
                             $peep_id = $peeps_row['user_id'];
                             $name = $peeps_row['name'];
-
+                            echo ("<h2>$name</h2>");
+                            echo ("<img style='width:100%' src='images/$pic' />");
                             $city = $peeps_row['city'];
                             $state = $peeps_row['state'];
                             $spiritual = $peeps_row['spiritual'];
@@ -71,37 +69,57 @@ ob_end_flush();
                             $lookingfor = $peeps_row['lookingfor'];
                             $profile_description = $peeps_row['profile_description'];
 
-                            echo ("<span class='temp'>");
+                            echo ("<span>");
                                 echo ("<p>Is $gender looking for $lookingfor</p>");
                                 echo ("<p>$profile_discription</p>");
                                 echo ("<P><a href='message.php?id=$peep_id&new_message=yes'>Message $name</a></p>");
-                                echo ("<P>$city, $state</p>");
-                                echo ("<p>$spiritual</p>");
-                                echo ("<p>$experts</p>");
-                                echo ("<p>$books</p>");
-                                echo ("<p>$seminars</p>");
-                                echo ("<p>$workshops</p>");
+                                echo ("<P>Lives: $city, $state</p>");
+                                echo ("<p>Spiritual Traditions: $spiritual</p>");
+                                echo ("<p>Enjoys Learning From: $experts</p>");
+                                echo ("<p>Has Read: $books</p>");
+                                echo ("<p>Attended These Seminars: $seminars</p>");
+                                echo ("<p>Been To These Workshops: $workshops</p>");
                             echo ("</span>");
-                        // echo ("</div>");
+                        echo ("</div>");
                     echo ("</div>");
                 }
+                
                 $peeps_sql = "select * from users where city NOT like '$user_city' and user_id <> $user_id";
                 $peeps_result = mysqli_query($link, $peeps_sql);
                 while ($peeps_row = mysqli_fetch_assoc($peeps_result)) {
-                    echo ("<div class='slide-wrapper'>");
-                        echo ("<div class='slide'>");
+                    echo ("<div style='width:100%;border-bottom:1px solid black;'>");
+                        echo ("<div style='width: 85%;margin:0 auto;'>");
                             $pic = $peeps_row['profile_pic'];
-                            echo ("<img class='slide-image' src='images/$pic' /></div>");
                             $peep_id = $peeps_row['user_id'];
                             $name = $peeps_row['name'];
-                            echo ("<span class='temp'>");
-                                echo ("<P><a href='message.php?id=$peep_id&new_message=yes'>$name</a></p>");
+                            echo ("<h2>$name</h2>");
+                            echo ("<img style='width:100%' src='images/$pic' />");
+                            $city = $peeps_row['city'];
+                            $state = $peeps_row['state'];
+                            $spiritual = $peeps_row['spiritual'];
+                            $experts = $peeps_row['experts'];
+                            $books = $peeps_row['books'];
+                            $seminars = $peeps_row['seminars'];
+                            $workshops = $peeps_row['workshops'];
+                            $gender = $peeps_row['gender'];
+                            $lookingfor = $peeps_row['lookingfor'];
+                            $profile_description = $peeps_row['profile_description'];
+
+                            echo ("<span>");
+                                echo ("<p>Is $gender looking for $lookingfor</p>");
+                                echo ("<p>$profile_discription</p>");
+                                echo ("<P><a href='message.php?id=$peep_id&new_message=yes'>Message $name</a></p>");
+                                echo ("<P>Lives: $city, $state</p>");
+                                echo ("<p>Spiritual Traditions: $spiritual</p>");
+                                echo ("<p>Enjoys Learning From: $experts</p>");
+                                echo ("<p>Has Read: $books</p>");
+                                echo ("<p>Attended These Seminars: $seminars</p>");
+                                echo ("<p>Been To These Workshops: $workshops</p>");
                             echo ("</span>");
                         echo ("</div>");
                     echo ("</div>");
                 }
                 ?>
-            </div>
-        </div>
+
     </body>
 </html>

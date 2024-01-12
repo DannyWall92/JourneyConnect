@@ -1,15 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100);
 
 html {
-    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 body{
-    height: 100%;
     margin: 0;
-    width: 100%;
-    height: auto;
     padding: 0;
-    overflow: hidden;  
 }
 table{
     width: 100%;
@@ -67,7 +64,7 @@ td {
     display: block;
 }
 a {
-    color: yellow;
+    color: blue;
 }
 .animate {
     transition: transform 0.3s ease-out;
