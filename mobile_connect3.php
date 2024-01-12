@@ -45,7 +45,17 @@ ob_end_flush();
             </div>
         </div>
         <div class="header_spacer">&nbsp;</div>
-
+            <div style='padding-left:15%;'>
+                Help us defray the costs of providing this service free to the community.
+                <form action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input type="hidden" name="business" value="GL75699DXZXHA" />
+                    <input type="hidden" name="no_recurring" value="0" />
+                    <input type="hidden" name="item_name" value="Help cover costs for providing Journey Connect to the Dr. Joe Dispenza community for free." />
+                    <input type="hidden" name="currency_code" value="USD" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                </form>
+            </div>
 
                 <?php
                 $peeps_sql = "select * from users where city like '$user_city' and user_id <> $user_id";
@@ -70,9 +80,9 @@ ob_end_flush();
                             $profile_description = $peeps_row['profile_description'];
 
                             echo ("<span>");
-                                echo ("<p>Is $gender looking for $lookingfor</p>");
+                                echo ("<p>Is a $gender looking for $lookingfor</p>");
                                 echo ("<p>$profile_discription</p>");
-                                echo ("<P><a href='message.php?id=$peep_id&new_message=yes'>Message $name</a></p>");
+                                echo ("<P><a style='color:blue;' href='message.php?id=$peep_id&new_message=yes'>Message $name</a></p>");
                                 echo ("<P>Lives: $city, $state</p>");
                                 echo ("<p>Spiritual Traditions: $spiritual</p>");
                                 echo ("<p>Enjoys Learning From: $experts</p>");
@@ -92,7 +102,9 @@ ob_end_flush();
                             $pic = $peeps_row['profile_pic'];
                             $peep_id = $peeps_row['user_id'];
                             $name = $peeps_row['name'];
-                            echo ("<h2>$name</h2>");
+                            $gender = $peeps_row['gender'];
+                            $lookingfor = $peeps_row['lookingfor'];
+                            echo ("<h2>$name is a $gender looking for a $lookingfor</h2>");
                             echo ("<img style='width:100%' src='images/$pic' />");
                             $city = $peeps_row['city'];
                             $state = $peeps_row['state'];
@@ -101,12 +113,9 @@ ob_end_flush();
                             $books = $peeps_row['books'];
                             $seminars = $peeps_row['seminars'];
                             $workshops = $peeps_row['workshops'];
-                            $gender = $peeps_row['gender'];
-                            $lookingfor = $peeps_row['lookingfor'];
                             $profile_description = $peeps_row['profile_description'];
 
                             echo ("<span>");
-                                echo ("<p>Is $gender looking for $lookingfor</p>");
                                 echo ("<p>$profile_discription</p>");
                                 echo ("<P><a href='message.php?id=$peep_id&new_message=yes'>Message $name</a></p>");
                                 echo ("<P>Lives: $city, $state</p>");

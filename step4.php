@@ -61,6 +61,7 @@ ob_end_flush();
                 } else {
                 ?>
                     <h2>Describe Yourself And What You Are Looking For</h2>
+                    <p>For yourself talk about things like travel, how often you meditate, go into more detail about yourself spiritually, do you drink/smoke/420, and of course as much detail about what you are looking for in a partner as possible.</p>
                     <form action="step5.php" method="POST">
                         <textarea class="inputarea" name="profile_description" rows="20" cols="50"></textarea><br />
                         <input type="submit" name="submit" value="Next >>" />
